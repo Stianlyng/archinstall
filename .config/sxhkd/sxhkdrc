@@ -6,6 +6,10 @@
 super + Return
 	alacritty
 
+# ranger 
+super + n
+	alacritty -e ranger
+
 # program launcher
 super + d
 	~/.config/rofi/launcher.sh
@@ -17,6 +21,11 @@ super + p
 # screenshot
 super + s
 	~/.config/rofi/screenshot.sh
+
+# Split
+super + e
+	bspc node @parent -R 90
+
 
 #
 # bspwm hotkeys
