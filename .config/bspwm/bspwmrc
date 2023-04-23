@@ -15,9 +15,9 @@ RANGER_LOAD_DEFAULT_RC=FALSE
 
 pgrep -x sxhkd > /dev/null || sxhkd &
 
-bspc monitor DP-0 -d I II III IV V 
-bspc monitor HDMI-0 -d VI VII VIII
-bspc monitor DVI-D-0 -d IX X
+bspc monitor DP-0 -d 1 2 3 4 5 
+bspc monitor HDMI-0 -d 6 7 8 9
+#bspc monitor DVI-D-0 -d 8 9
 
 bspc config border_width         4
 bspc config window_gap          12
@@ -47,6 +47,9 @@ bspc rule -a mplayer2 state=floating
 bspc rule -a Kupfer.py focus=on
 bspc rule -a Screenkey manage=off
 
+bspc rule -a Zathura state=tiled
+bspc rule -a kittyToggle desktop='^1' state=floating focus=on follow=on sticky=on hidden=on center=true locked=on rectangle=1920x1000+0+0
+
 #################################################################
 #								#
 #			   AUTOSTART				#
@@ -55,12 +58,13 @@ bspc rule -a Screenkey manage=off
 
 # KEYBOARD
 
+kmonad ~/.config/kmonad/air60.kbd &				# KEYBOARD MAPPING
 setxkbmap eu &							# KEYBOARD LAYOUT
 
 # DISPLAY 
 
-xrandr --output DP-0 --primary --mode 3840x2160 --rotate normal --output HDMI-0  --mode 1920x1080 --rotate right --right-of DP-0
-
+#xrandr --output DP-0 --primary --mode 3840x2160 --rate 144  --pos 0x0 --rotate normal --output HDMI-0 --mode 1920x1080 --rate 60 --rotate right --right-of DP-0 
+~/.screenlayout/default.sh &
 # TOPBAR
 
 ~/.config/polybar/launch.sh &					# POLYBAR LAUNCH SCRIPT
@@ -79,6 +83,11 @@ picom -b &							# BLUR AND STUFF
 
 # Notifications
 /usr/bin/dunst &						# NOTIFICATIONS
-/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 	# POLKIT AUTHENTICATION
+/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &	# POLKIT AUTHENTICATION
 
+# Applications
+kitty --class kittyToggle & 
+
+# Success notification
+notify-send "Reload success!"
 

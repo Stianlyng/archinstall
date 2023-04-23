@@ -3,12 +3,18 @@
 #
 
 # terminal emulator
-super + Return
-	alacritty
+super + {_,shift + }Return
+	{kitty,~/.config/sxhkd/scripts/hideWindow.sh}
+	#{alacritty, bspc node $(xdo id -N AlacrittyCenter) -g hidden}
 
 # ranger 
-super + n
-	alacritty -e ranger
+super + {_,shift + }n
+	{kitty -e ranger, thunar}
+
+# Firefox
+super + w
+	firefox
+
 
 # program launcher
 super + d
@@ -73,8 +79,12 @@ super + {_,shift + }{h,j,k,l}
 #	bspc node -f @{parent,brother,first,second}
 
 # focus the next/previous window in the current desktop
-super + {_,shift + }@space
+super + shift + @space
 	bspc node -f {next,prev}.local.!hidden.window
+
+# focus the next/previous window in the current desktop
+super + @space
+	bspc desktop -f next.local
 
 # focus the next/previous desktop in the current monitor
 super + bracket{left,right}
