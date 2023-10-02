@@ -1,23 +1,33 @@
 #!/bin/bash
 
-sudo pacman -Syu
+sudo pacman -Syu 
 
-# X11 related
-sudo pacman -S --noconfirm git base-devel xorg-server xorg-xinit libx11 libxft libxinerama
+# Install essentials
+sudo pacman -S --noconfirm base-devel git ranger neovim terminus-font
 
-# Other
-sudo pacman -S --noconfirm alacritty ranger neovim terminus-font
-
-echo 'finished added packages'
-
-# Bytt ut med egen
+# Clone dotfiles and configs
 git clone https://github.com/Stianlyng/archinstall.git
-cd archinstall/dwm
-sudo make clean install
 
-echo 'successfully installed dwm'
-cd ~/
+read -p "Do you want to use dwm window manager? [Y/n] " response
 
-# Copying
-cp archinstall/xinitrc ~/.xinitrc
+case "$response" in
+    [yY][eE][sS]|[yY])
+        echo "You chose yes."
+        
+        # Install dwm dependencies and other software
+        sudo pacman -S --noconfirm xorg-server xorg-xinit libx11 libxft libxinerama alacritty
 
+        # Install dwm
+        cd archinstall/dwm
+        sudo make clean install
+        echo 'Successfully installed dwm'
+        cd ~/
+        cp archinstall/xinitrc ~/.xinitrc
+        ;;
+    [nN][oO]|[nN])
+        echo "You chose no."
+        ;;
+    *)
+        echo "Invalid response."
+        ;;
+esac
