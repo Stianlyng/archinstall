@@ -2,22 +2,19 @@
 
 sudo pacman -Syu
 
+# X11 related
 sudo pacman -S git base-devel xorg-server xorg-xinit libx11 libxft
 
+# Other
+sudo pacman -S alacritty
+
 # Bytt ut med egen
-git clone git://git.suckless.org/dwm
-cd dwm
+git clone git@github.com:Stianlyng/archinstall.git
+cd archinstall/dwm
 make clean install
 
-cd 
+cd ~/
 
-# Starting dwm automatically
+# Copying
+cp archinstall/xinitrc ~/.xinitrc
 
-cat > ~/.xinitrc <<'EOF'
-while true
-do
-    xsetroot -name "$(date) $(uptime | sed 's/.*,//')"
-    sleep 1
-done &
-exec dwm
-EOF
