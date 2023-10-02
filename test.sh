@@ -3,10 +3,10 @@
 sudo pacman -Syu
 
 # X11 related
-sudo pacman -S --no-confirm git base-devel xorg-server xorg-xinit libx11 libxft
+sudo pacman -S --noconfirm git base-devel xorg-server xorg-xinit libx11 libxft
 
 # Other
-sudo pacman -S --no-confrim alacritty ranger neovim
+sudo pacman -S --noconfrim alacritty ranger neovim
 
 echo 'finished added packages'
 
