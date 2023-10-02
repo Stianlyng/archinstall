@@ -24,26 +24,28 @@ ask_yes_no() {
 sudo pacman -Syu 
 sudo pacman -S --noconfirm base-devel git ranger neovim terminus-font zsh
 
-# add dotfiles 
-cp archinstall/.config/nvim ~/.config/nvim
-cp .zshrc ~/.zshrc
-
 # Change default shell
-chsh -s /bin/zsh
-if ask_yes_no "Do you want to install starship for zsh?"; then
-    sudo pacman -S --noconfirm starship
-    # Append the starship init command to the .zshrc file
-    echo 'eval "$(starship init zsh)"' >> ~/.zshrc
+if ask_yes_no "Do you want to install fish shell?"; then
+    sudo pacman -S --noconfirm fish
+    chsh -s /bin/fish
 fi
+
 
 # Clone dotfiles and configs
 git clone https://github.com/Stianlyng/archinstall.git
+
+# add dotfiles 
+cp -r archinstall/config_cli ~/.config # default dotfiles
+
+if ask_yes_no "Do you want to use a window manager?";then
+    sudo pacman -S --noconfirm alacritty firefox pfmanfm
+fi
 
 if ask_yes_no "Do you want to use dwm window manager?"; then
     echo "You chose yes."
 
     # Install dwm dependencies and other software
-    sudo pacman -S --noconfirm xorg-server xorg-xinit libx11 libxft libxinerama alacritty
+    sudo pacman -S --noconfirm xorg-server xorg-xinit libx11 libxft libxinerama
 
     # Install dwm
     cd archinstall/dwm
