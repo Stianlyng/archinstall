@@ -10,14 +10,14 @@ sudo pacman -S --noconfrim alacritty ranger neovim
 
 echo 'finished added packages'
 
-
 # Bytt ut med egen
-cd archinstall/dwm
-make clean install
+git clone https://github.com/Stianlyng/archinstall.git
+#cd archinstall/dwm
+#make clean install
 
-echo 'successfully installed dwm'
-cd ~/
+#echo 'successfully installed dwm'
+#cd ~/
 
 # Copying
-cp archinstall/xinitrc ~/.xinitrc
+#cp archinstall/xinitrc ~/.xinitrc
 
