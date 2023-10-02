@@ -6,7 +6,7 @@ sudo pacman -Syu
 sudo pacman -S --noconfirm git base-devel xorg-server xorg-xinit libx11 libxft libxinerama
 
 # Other
-sudo pacman -S --noconfirm alacritty ranger neovim 
+sudo pacman -S --noconfirm alacritty ranger neovim terminus-font
 
 echo 'finished added packages'
 
