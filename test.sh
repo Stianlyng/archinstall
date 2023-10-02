@@ -22,7 +22,19 @@ ask_yes_no() {
 
 # Update and install essentials
 sudo pacman -Syu 
-sudo pacman -S --noconfirm base-devel git ranger neovim terminus-font
+sudo pacman -S --noconfirm base-devel git ranger neovim terminus-font zsh
+
+# add dotfiles 
+cp archinstall/.config/nvim ~/.config/nvim
+cp .zshrc ~/.zshrc
+
+# Change default shell
+chsh -s /bin/zsh
+if ask_yes_no "Do you want to install starship for zsh?"; then
+    sudo pacman -S --noconfirm starship
+    # Append the starship init command to the .zshrc file
+    echo 'eval "$(starship init zsh)"' >> ~/.zshrc
+fi
 
 # Clone dotfiles and configs
 git clone https://github.com/Stianlyng/archinstall.git
@@ -41,4 +53,6 @@ if ask_yes_no "Do you want to use dwm window manager?"; then
     cp archinstall/xinitrc_dwm ~/.xinitrc
 fi
 
-
+if ask_yes_no "The installer is finished, do you want to log out for the canges to make effect?"; then
+    exit
+fi

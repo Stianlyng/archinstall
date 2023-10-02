@@ -11,8 +11,6 @@ autoload -Uz compinit
 compinit
 # End of lines added by compinstall
 
-eval "$(starship init zsh)"
-
 # ALIASES
 alias r='ranger'
 alias sr='sudo ranger'
