@@ -12,7 +12,7 @@ echo 'finished added packages'
 
 
 # Bytt ut med egen
-git clone git@github.com:Stianlyng/archinstall.git
+git clone https://github.com/Stianlyng/archinstall.git
 cd archinstall/dwm
 make clean install
 
