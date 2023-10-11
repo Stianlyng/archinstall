@@ -41,14 +41,14 @@ git clone https://github.com/Stianlyng/archinstall.git
 cp -r archinstall/config_cli ~/.config # default dotfiles
 
 if ask_yes_no "Do you want to use a window manager?";then
-    sudo pacman -S --noconfirm alacritty firefox pfmanfm
+    sudo pacman -S --noconfirm alacritty firefox pfmanfm 
 fi
 
 if ask_yes_no "Do you want to use dwm window manager?"; then
     echo "You chose yes."
 
     # Install dwm dependencies and other software
-    sudo pacman -S --noconfirm xorg-server xorg-xinit libx11 libxft libxinerama
+    sudo pacman -S --noconfirm xorg-server xorg-xinit libx11 libxft libxinerama dmenu
 
     # Install dwm
     cd archinstall/dwm
