@@ -44,8 +44,8 @@ static const Rule rules[] = {
 	{ "Gimp",     NULL,	  NULL,	      0,	    1,		 -1 },
 	{ "Firefox",  NULL,	  NULL,	      1 << 8,	    0,		 -1 },
 	{ NULL,	      NULL,	  "spterm",   SPTAG(0),	    1,		 -1 },
-	{ NULL,       "spfm",	  NULL,	      SPTAG(1),	    1,		 -1 },
-	{ NULL,	      "keepassxc",NULL,	      SPTAG(2),	    1,		 -1 },
+	{ NULL,       NULL,   "spfm",	  SPTAG(1),	    1,		 -1 },
+	{ NULL,	      "keepassxc",NULL,	  SPTAG(2),	    1,		 -1 },
 };
 
 /* layout(s) */
