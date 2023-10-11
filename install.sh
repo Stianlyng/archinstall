@@ -22,7 +22,10 @@ ask_yes_no() {
 
 # Update and install essentials
 sudo pacman -Syu 
-sudo pacman -S --noconfirm base-devel git ranger neovim terminus-font zsh
+sudo pacman -S --noconfirm base-devel git ranger neovim terminus-font zsh ly
+
+# Enable ly display manager
+sudo systemctl enable ly
 
 # Change default shell
 if ask_yes_no "Do you want to install fish shell?"; then
