@@ -1,8 +1,14 @@
 import os
 import subprocess
+import getpass
 
 def run_command(command):
-    subprocess.run(command, shell=True)
+    if command.startswith("sudo"):
+        command = f"echo {sudo_password} | {command}"
+    subprocess.run(command, shell=True, text=True)
+
+# Ask for sudo password
+sudo_password = getpass.getpass("Enter your sudo password: ")
 
 # Install yay
 run_command("sudo pacman -S --needed git base-devel")
