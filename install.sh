@@ -82,6 +82,7 @@ packages=(
   "sxhkd"
   "xclip"
   "nitrogen"
+  "xorg"
 
   # For Wayland
   "hyprland"
