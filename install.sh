@@ -110,8 +110,8 @@ echo "Enter password for decrypting secrets:"
 read -s decryption_key
 
 # Decrypt the files
-echo $decryption_key | gpg --batch --passphrase-fs 0 id_rsa.gpg
-echo $decryption_key | gpg --batch --passphrase-fs 0 gpg id_rsa.pub.gpg
+echo $decryption_key | gpg --batch --passphrase-fs 0 ssh/id_rsa.gpg
+echo $decryption_key | gpg --batch --passphrase-fs 0 ssh/id_rsa.pub.gpg
 
 # Copy ssh keys
 mkdir -p $HOME/.ssh
