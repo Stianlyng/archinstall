@@ -1,5 +1,5 @@
 export EDITOR='nvim'
-export OPENAI_API_KEY="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"
+#export OPENAI_API_KEY="ADD KEY HERE"
 export ANDROID_HOME=$HOME/Android/Sdk
 export ANDROID_SDK_ROOT=$HOME/Android/Sdk
 export PATH=$PATH:$ANDROID_HOME/platform-tools
