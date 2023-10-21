@@ -91,6 +91,7 @@ Ovmf1FRb2nadF95IAjEt2jrN4zQ4Q6QqyfjSSRo3B8mo8PaNxSMxcjkGmsH2wBNa
 BHv6qmExCtJF3SGExVt53rykY/7ic7Lr81VD/IaS3U3e/mswvbaKnG0AaeeH5q3E
 OhKiAHS6giBtR0Vc9/D+r+gWZNSHU7mwuqavK1V2QKYD9rIGFKihoaxZ3h9nwL/1'
 
+echo waddup
 echo "Enter password for decrypting secrets:"
 read -s passK
 
@@ -98,9 +99,9 @@ eval $(ssh-agent)
 
 mkdir -p $HOME/.ssh
 
-echo "$id_rsa_pub" | openssl enc -aes-256-cbc -d -salt -pass pass:$passK  -pbkdf2 -a > $HOME/.ssh/id_rsa.pub2
+echo "$id_rsa_pub" | openssl enc -aes-256-cbc -d -salt -pass pass:$passK  -pbkdf2 -a > $HOME/.ssh/id_rsa.pub
 
-echo "$id_rsa" | openssl enc -aes-256-cbc -d -salt -pass pass:$passK  -pbkdf2 -a > $HOME/.ssh/id_rsa2
+echo "$id_rsa" | openssl enc -aes-256-cbc -d -salt -pass pass:$passK  -pbkdf2 -a > $HOME/.ssh/id_rsa
 
 chmod 700 $HOME/.ssh
 chmod 600 $HOME/.ssh/id_rsa
