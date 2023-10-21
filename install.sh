@@ -1,4 +1,5 @@
 #!/bin/bash
+
 config_dir="$HOME/.config"
 
 # Default apps
@@ -102,31 +103,6 @@ done
 
 # Enable ly display manager
 sudo systemctl enable $display_manager
-
-###########	SSH	###########
-
-# Start the ssh-agent
-eval $(ssh-agent)
-
-# Prompt the user for input
-echo "Enter password for decrypting secrets:"
-read -s decryption_key
-
-# Decrypt the files
-echo $decryption_key | gpg --batch --passphrase-fd 0 ssh/id_rsa.gpg
-echo $decryption_key | gpg --batch --passphrase-fd 0 ssh/id_rsa.pub.gpg
-
-# Copy ssh keys
-mkdir -p $HOME/.ssh
-cp -r ssh/* $HOME/.ssh/
-
-# Set permissions
-chmod 700 $HOME/.ssh
-chmod 600 $HOME/.ssh/id_rsa
-chmod 644 $HOME/.ssh/id_rsa.pub
-
-# Add ssh keys to the agent
-ssh-add $HOME/.ssh/id_rsa
 
 ###########	SHELL	###########
 
