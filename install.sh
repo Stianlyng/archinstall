@@ -18,6 +18,7 @@ sudo echo "Script started"
 ##						##
 ##################################################
 mkdir -p $HOME/code
+mkdir -p $HOME/.local/share/
 
 ##################################################
 ##						##
@@ -41,8 +42,8 @@ ln -fs $(pwd)/configs/waybar	 $config_dir/waybar
 
 ln -fs $(pwd)/wallpapers	 $HOME/.wallpapers
 ln -fs $(pwd)/scripts		 $HOME/.scripts
-ln -fs $(pwd)/fonts 		 $HOME/.local/share/fonts
 
+ln -fs $(pwd)/fonts 		 $HOME/.local/share/fonts
 ln -fs $(pwd)/configs/zshrc	 $HOME/.zshrc
 
 # refresh fonts cache
@@ -75,7 +76,8 @@ packages=(
   "gnupg" # encryption for secrets etc..
 
   # Development
-  "node"
+  "nodejs"
+  "npm"
 
   # For X11
   "bspwm"
