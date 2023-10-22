@@ -45,6 +45,7 @@ ln -fs $(pwd)/wallpapers	 $HOME/.wallpapers
 ln -fs $(pwd)/scripts		 $HOME/.scripts
 
 ln -fs $(pwd)/fonts 		 $HOME/.local/share/fonts
+ln -fs $(pwd)/desktopfiles 	 $HOME/.local/share/applications
 ln -fs $(pwd)/configs/zshrc	 $HOME/.zshrc
 
 # refresh fonts cache
@@ -137,11 +138,15 @@ ssh-add $HOME/.ssh/id_rsa
 # Change from the https to ssh origin in the repo
 git remote set-url origin git@github.com:Stianlyng/archinstall.git
 
+# add git username
+git config --global user.email "stianlyng@protonmail.com"
+git config --global user.name "Stian Lyng"
+
 ###########	HARDWARE	###########
 
 # Change modkey if running inside a VM
 
-if sudo dmidecode -s system-manufacturer | grep -iq "vmware\|virtualbox\|xen\|kvm\|qemu"; then
+if sudo dmidecode -s system-manufacturer | grep -iq "vmware\|virtualbox\|xen\|kvm\|qemu\|Microsoft Corporation"; then
   echo "Running in a VM"
 
   # Set custom modkey
