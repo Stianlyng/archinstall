@@ -135,9 +135,7 @@ chmod 644 $HOME/.ssh/id_rsa.pub
 ssh-add $HOME/.ssh/id_rsa
 
 # Change from the https to ssh origin in the repo
-cd code/archinstall
 git remote set-url origin git@github.com:Stianlyng/archinstall.git
-cd $HOME
 
 ###########	HARDWARE	###########
 
