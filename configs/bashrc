@@ -1,0 +1,9 @@
+alias r='ranger'
+alias sr='sudo ranger'
+alias ls='ls --color=auto'
+
+
+alias tarnow='tar -acf '
+alias untar='tar -zxvf '
+
+
