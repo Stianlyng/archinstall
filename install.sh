@@ -50,7 +50,7 @@ ln -fs $(pwd)/desktopfiles 	 $HOME/.local/share/applications
 # Shell env
 ln -fs $(pwd)/configs/zshrc	 $HOME/.zshrc
 ln -fs $(pwd)/configs/bashrc	 $HOME/.bashrc
-ln -fs $(pwd)/configs/profle     $HOME/.profile
+ln -fs $(pwd)/configs/profile    $HOME/.profile
 
 # refresh fonts cache
 fc-cache -fv
