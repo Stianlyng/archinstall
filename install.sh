@@ -108,39 +108,11 @@ sudo systemctl enable $display_manager
 ###########	SHELL	###########
 
 # Change default shell
-sudo chsh -s /bin/$shell
+chsh -s /bin/$shell
 
 ###########	SSH	###########
 
-# Start the ssh-agent
-eval $(ssh-agent)
-
-# Prompt the user for input
-echo "Enter password for decrypting secrets:"
-read -s decryption_key
-
-# Decrypt the files
-echo $decryption_key | gpg --batch --passphrase-fd 0 ssh/id_rsa.gpg
-echo $decryption_key | gpg --batch --passphrase-fd 0 ssh/id_rsa.pub.gpg
-
-# Copy ssh keys
-mkdir -p $HOME/.ssh
-cp -r ssh/* $HOME/.ssh/
-
-# Set permissions
-chmod 700 $HOME/.ssh
-chmod 600 $HOME/.ssh/id_rsa
-chmod 644 $HOME/.ssh/id_rsa.pub
-
-# Add ssh keys to the agent
-ssh-add $HOME/.ssh/id_rsa
-
-# Change from the https to ssh origin in the repo
-git remote set-url origin git@github.com:Stianlyng/archinstall.git
-
-# add git username
-git config --global user.email "stianlyng@protonmail.com"
-git config --global user.name "Stian Lyng"
+./scripts/git_setup.sh
 
 ###########	HARDWARE	###########
 
@@ -150,8 +122,8 @@ if sudo dmidecode -s system-manufacturer | grep -iq "vmware\|virtualbox\|xen\|kv
   echo "Running in a VM"
 
   # Set custom modkey
-  ./scripts/replace_words.sh configs/sxhkd/sxhkdrc super alt
-  ./scripts/replace_words.sh configs/hypr/keybinds.conf SUPER alt
+  ./scripts/utils/replace_words.sh configs/sxhkd/sxhkdrc super alt
+  ./scripts/utils/replace_words.sh configs/hypr/keybinds.conf SUPER alt
 
 else
   echo "Not running in a VM"

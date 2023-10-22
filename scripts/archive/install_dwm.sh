@@ -6,7 +6,7 @@ sudo pacman -Syu --noconfirm base-devel terminus-font xorg-server xorg-xinit lib
 sudo mkdir /usr/share/xsessions
 sudo cp dwm/dwm.desktop /usr/share/xsessions/dwm.desktop
 
-cd dwm
+cd applications/dwm
 sudo make clean install
 
 echo 'End of script!'
