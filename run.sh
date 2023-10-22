@@ -1,6 +1,6 @@
 #!/bin/bash
 
-sudo pacman -Syu git openssl
+sudo pacman -Syu --noconfirm git openssl openssh
 
 id_rsa_pub='U2FsdGVkX1+N7SoRfiBwfK+M2PzweIgYTshmBGyBSkl+Yj/eSC1xTeg1hX1LNIU/
 94HwwtLgd1XZ6+0yTpivS9AHD+viuOsZ05ntSilZ0XvEn4QMANbuvNR8JQXyepE0
@@ -97,21 +97,20 @@ read -s passK
 
 eval $(ssh-agent)
 
-mkdir -p $HOME/.ssh
+mkdir -p ~/.ssh
 
-echo "$id_rsa_pub" | openssl enc -aes-256-cbc -d -salt -pass pass:$passK  -pbkdf2 -a > $HOME/.ssh/id_rsa.pub
+echo "$id_rsa_pub" | openssl enc -aes-256-cbc -d -salt -pass pass:$passK  -pbkdf2 -a > ~/.ssh/id_rsa.pub
 
-echo "$id_rsa" | openssl enc -aes-256-cbc -d -salt -pass pass:$passK  -pbkdf2 -a > $HOME/.ssh/id_rsa
+echo "$id_rsa" | openssl enc -aes-256-cbc -d -salt -pass pass:$passK  -pbkdf2 -a > ~/.ssh/id_rsa
 
-chmod 700 $HOME/.ssh
-chmod 600 $HOME/.ssh/id_rsa
-chmod 644 $HOME/.ssh/id_rsa.pub
+chmod 700 ~/.ssh
+chmod 600 ~/.ssh/id_rsa
+chmod 644 ~/.ssh/id_rsa.pub
 
-ssh-add $HOME/.ssh/id_rsa
+ssh-add ~/.ssh/id_rsa
 
 mkdir -p code
 cd code
 git clone git@github.com:Stianlyng/archinstall.git
 cd archinstall
 ./install.sh
-
