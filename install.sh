@@ -73,7 +73,7 @@ ln -s $(pwd)/desktopfiles 	 $HOME/.local/share/applications
 
 # Shell environments
 ln -s $(pwd)/configs/zshrc	 $HOME/.zshrc
-ln -s $(pwd)/configs/bashrc	 $HOME/.bashrc
+ln -fs $(pwd)/configs/bashrc	 $HOME/.bashrc
 ln -s $(pwd)/configs/profile    $HOME/.profile
 
 # refresh fonts cache
@@ -112,7 +112,7 @@ packages=(
 
 if ask_question "Do you want to install graphical apps such as firefox and nemo?"; then
 
-  packages += ( 
+  packages+=( 
   "$browser"
   "$gui_filemanager"
   "polkit-kde-agent"
@@ -131,7 +131,7 @@ fi
 
 if ask_question "Do you want to install bspwm?"; then
 
-  packages += ( 
+  packages+=( 
     "bspwm"
     "sxhkd"
     "xclip"
@@ -152,7 +152,7 @@ fi
 
 if ask_question "Do you want to install hyprland?"; then
 
-  packages += ( 
+  packages+=( 
     "hyprland"
     "xdg-desktop-portal-hyprland"
     "swaybg"
