@@ -11,7 +11,12 @@ launcher=rofi
 shell=zsh
 display_manager=ly
 
-sudo echo "Script started"
+
+##################################################
+##						##
+##		     methods			##
+##						##
+##################################################
 
 ask_question() {
   local prompt="$1"
@@ -27,11 +32,11 @@ ask_question() {
 }
 
 # Example usage
-if ask_question "Do you want to continue?"; then
-  echo "You chose to continue."
-else
-  echo "You chose not to continue."
-fi
+# if ask_question "Do you want to continue?"; then
+#   echo "You chose to continue."
+# else
+#   echo "You chose not to continue."
+# fi
 
 ##################################################
 ##						##
@@ -51,32 +56,25 @@ chmod -R 755 configs
 chmod -R 755 scripts
 chmod -R 755 hardware
 
+
 #############	    Symlinks 	      ############
 
 # regular
-ln -fs $(pwd)/configs/$term      $config_dir/$term
-ln -fs $(pwd)/configs/kmonad     $config_dir/kmonad
-ln -fs $(pwd)/configs/nvim       $config_dir/nvim
+ln -s $(pwd)/configs/$term      $config_dir/$term
+ln -s $(pwd)/configs/kmonad     $config_dir/kmonad
+ln -s $(pwd)/configs/nvim       $config_dir/nvim
 
-# X11 (bspwm)
-ln -fs $(pwd)/configs/bspwm      $config_dir/bspwm
-ln -fs $(pwd)/configs/rofi 	 $config_dir/rofi
-ln -fs $(pwd)/configs/sxhkd	 $config_dir/sxhkd
-
-# Wayland (hypr)
-ln -fs $(pwd)/configs/hypr	 $config_dir/hypr
-ln -fs $(pwd)/configs/waybar	 $config_dir/waybar
 
 # Other 
-ln -fs $(pwd)/wallpapers	 $HOME/.wallpapers
-ln -fs $(pwd)/scripts		 $HOME/.scripts
-ln -fs $(pwd)/fonts 		 $HOME/.local/share/fonts
-ln -fs $(pwd)/desktopfiles 	 $HOME/.local/share/applications
+ln -s $(pwd)/wallpapers	 $HOME/.wallpapers
+ln -s $(pwd)/scripts		 $HOME/.scripts
+ln -s $(pwd)/fonts 		 $HOME/.local/share/fonts
+ln -s $(pwd)/desktopfiles 	 $HOME/.local/share/applications
 
 # Shell environments
-ln -fs $(pwd)/configs/zshrc	 $HOME/.zshrc
-ln -fs $(pwd)/configs/bashrc	 $HOME/.bashrc
-ln -fs $(pwd)/configs/profile    $HOME/.profile
+ln -s $(pwd)/configs/zshrc	 $HOME/.zshrc
+ln -s $(pwd)/configs/bashrc	 $HOME/.bashrc
+ln -s $(pwd)/configs/profile    $HOME/.profile
 
 # refresh fonts cache
 fc-cache -fv
@@ -91,9 +89,7 @@ packages=(
 
   # Essentials
   "$term"
-  "$browser"
   "$cli_filemanager"
-  "$gui_filemanager"
   "$launcher"
   "$display_manager"
   "$shell"
@@ -103,8 +99,6 @@ packages=(
   "fzf"
   "neovim"
   "tldr"
-  "polkit-kde-agent"
-  "dunst"
   "dmidecode"
   "gnupg" # encryption for secrets etc..
 
@@ -112,20 +106,67 @@ packages=(
   "nodejs"
   "npm"
 
-  # For X11
-  "bspwm"
-  "sxhkd"
-  "xclip"
-  "nitrogen"
-  "polybar"
-  "xorg"
-
-  # For Wayland
-  "hyprland"
-  "xdg-desktop-portal-hyprland"
-  "swaybg"
-  "waybar"
 )
+
+#########               Graphical  	    #########
+
+if ask_question "Do you want to install graphical apps such as firefox and nemo?"; then
+
+  packages += ( 
+  "$browser"
+  "$gui_filemanager"
+  "polkit-kde-agent"
+  "dunst"
+  )
+
+  ln -s $(pwd)/configs/bspwm      $config_dir/bspwm
+  ln -s $(pwd)/configs/rofi 	  $config_dir/rofi
+  ln -s $(pwd)/configs/sxhkd	  $config_dir/sxhkd
+
+else
+  echo "You chose not to install bspwm."
+fi
+
+#########               BSPWM               #########
+
+if ask_question "Do you want to install bspwm?"; then
+
+  packages += ( 
+    "bspwm"
+    "sxhkd"
+    "xclip"
+    "nitrogen"
+    "polybar"
+    "xorg"
+  )
+
+  ln -s $(pwd)/configs/bspwm      $config_dir/bspwm
+  ln -s $(pwd)/configs/rofi 	  $config_dir/rofi
+  ln -s $(pwd)/configs/sxhkd	  $config_dir/sxhkd
+
+else
+  echo "You chose not to install bspwm."
+fi
+
+#########               Hyprland              #########
+
+if ask_question "Do you want to install hyprland?"; then
+
+  packages += ( 
+    "hyprland"
+    "xdg-desktop-portal-hyprland"
+    "swaybg"
+    "waybar"
+  )
+
+  ln -s $(pwd)/configs/hypr	 $config_dir/hypr
+  ln -s $(pwd)/configs/waybar	 $config_dir/waybar
+
+
+else
+  echo "You chose not to install hyprland."
+fi
+
 
 for pkg in "${packages[@]}"; do
   sudo pacman -S --needed --noconfirm $pkg || echo "Failed to install $pkg" >> logfile.txt
