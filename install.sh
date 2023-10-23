@@ -13,6 +13,26 @@ display_manager=ly
 
 sudo echo "Script started"
 
+ask_question() {
+  local prompt="$1"
+  local default_answer="Y"
+
+  read -p "${prompt} [Y/n] " answer
+
+  if [[ -z "$answer" ]]; then
+    answer="$default_answer"
+  fi
+
+  [[ "$answer" =~ ^[Yy]$ ]]
+}
+
+# Example usage
+if ask_question "Do you want to continue?"; then
+  echo "You chose to continue."
+else
+  echo "You chose not to continue."
+fi
+
 ##################################################
 ##						##
 ##		     home			##
