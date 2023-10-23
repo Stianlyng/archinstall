@@ -36,6 +36,8 @@ if [ "$XDG_SESSION_TYPE" = "x11" ]; then
   # wallpaper
   nitrogen --set-zoom-fill $WALLPAPER &
 
+  polybar &
+
 ##########################################
 #	   	Wayland			 #
 ##########################################
