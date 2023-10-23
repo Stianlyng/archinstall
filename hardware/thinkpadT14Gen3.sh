@@ -82,7 +82,8 @@ method=auto
 
 write_to_file "$str" "/etc/NetworkManager/system-connections" "Telia.nmconnection"
 
-sudo chmod 600 /etc/NetworkManager/system-connections/Telia.nmconnection
+# Does not work...
+#sudo chmod 600 /etc/NetworkManager/system-connections/Telia.nmconnection
 
 ####################
 #     Mute fix     #		
