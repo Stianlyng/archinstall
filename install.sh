@@ -130,10 +130,14 @@ chsh -s /bin/$shell
 
 ./scripts/git_setup.sh
 
-###########	HARDWARE	###########
+##################################################
+##						##
+##		     Hardware			##
+##						##
+##################################################
 
-# Change modkey if running inside a VM
-
+####   Change modkey if running inside a VM   ####
+#
 if sudo dmidecode -s system-manufacturer | grep -iq "vmware\|virtualbox\|xen\|kvm\|qemu\|Microsoft Corporation"; then
   echo "Running in a VM"
 
@@ -145,7 +149,7 @@ else
   echo "Not running in a VM"
 fi
 
-# Choose spesific machine configs
+####     Choose spesific machine configs     ####
 
 PS3="Select a file: "
 
