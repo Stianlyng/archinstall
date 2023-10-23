@@ -41,7 +41,6 @@ bspc rule -a Kupfer.py focus=on
 bspc rule -a Screenkey manage=off
 
 bspc rule -a Zathura state=tiled
-bspc rule -a kittyToggle desktop='^1' state=floating focus=on follow=on sticky=on hidden=on center=true locked=on rectangle=1920x1000+0+0
 
 #################################################################
 #								#

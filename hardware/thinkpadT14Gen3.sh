@@ -56,6 +56,22 @@ sudo systemctl enable ModemManager.service
 # The integrated modem is supported by default, but you need a custom FCC unlock script for ModemManager.
 sudo ln -s /usr/share/ModemManager/fcc-unlock.available.d/2c7c /etc/ModemManager/fcc-unlock.d/2c7c:030a
 
+# Add network manager profile (PIN code etc)
+
+echo "Enter password for decrypting sim card profile:"
+read -s decryption_key
+
+filename=Telia.nmconnection
+src_path=network/connections
+dest_path=/etc/Network/Manager/system-connections
+
+echo $decryption_key | gpg --batch --passphrase-fd 0 $src_path/$filename.gpg
+
+sudo mkdir -p $dest_path
+
+sudo cp $src_path/$filename $dest_path/$filename
+
+sudo chmod 600 $dest_path/$filename
 
 ####################
 #     Mute fix     #		

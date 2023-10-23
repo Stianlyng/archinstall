@@ -6,7 +6,7 @@ config_dir="$HOME/.config"
 term=alacritty
 browser=firefox
 cli_filemanager=ranger
-gui_filemanager=thunar
+gui_filemanager=nemo
 launcher=rofi
 shell=zsh
 display_manager=ly
@@ -31,23 +31,29 @@ chmod -R 755 configs
 chmod -R 755 scripts
 chmod -R 755 hardware
 
-# Symlinks
+#############	    Symlinks 	      ############
+
+# regular
 ln -fs $(pwd)/configs/$term      $config_dir/$term
-ln -fs $(pwd)/configs/bspwm      $config_dir/bspwm
-ln -fs $(pwd)/configs/hypr	 $config_dir/hypr
 ln -fs $(pwd)/configs/kmonad     $config_dir/kmonad
 ln -fs $(pwd)/configs/nvim       $config_dir/nvim
+
+# X11 (bspwm)
+ln -fs $(pwd)/configs/bspwm      $config_dir/bspwm
 ln -fs $(pwd)/configs/rofi 	 $config_dir/rofi
 ln -fs $(pwd)/configs/sxhkd	 $config_dir/sxhkd
+
+# Wayland (hypr)
+ln -fs $(pwd)/configs/hypr	 $config_dir/hypr
 ln -fs $(pwd)/configs/waybar	 $config_dir/waybar
 
+# Other 
 ln -fs $(pwd)/wallpapers	 $HOME/.wallpapers
 ln -fs $(pwd)/scripts		 $HOME/.scripts
-
 ln -fs $(pwd)/fonts 		 $HOME/.local/share/fonts
 ln -fs $(pwd)/desktopfiles 	 $HOME/.local/share/applications
 
-# Shell env
+# Shell environments
 ln -fs $(pwd)/configs/zshrc	 $HOME/.zshrc
 ln -fs $(pwd)/configs/bashrc	 $HOME/.bashrc
 ln -fs $(pwd)/configs/profile    $HOME/.profile
@@ -74,6 +80,7 @@ packages=(
   "base-devel"
   "openssh"
   "git"
+  "fzf"
   "neovim"
   "tldr"
   "polkit-kde-agent"
@@ -90,6 +97,7 @@ packages=(
   "sxhkd"
   "xclip"
   "nitrogen"
+  "polybar"
   "xorg"
 
   # For Wayland
@@ -104,7 +112,11 @@ for pkg in "${packages[@]}"; do
 done
 
 # Install yay
-#git clone https://aur.archlinux.org/yay.git && cd yay && makepkg -si
+git clone https://aur.archlinux.org/yay.git 
+cd yay
+makepkg -si
+cd ..
+rm -rf yay
 
 # Enable ly display manager
 sudo systemctl enable $display_manager

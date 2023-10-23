@@ -4,21 +4,19 @@ alt + Return
 
 # ranger 
 alt + {_,shift + }n
-	{alacritty -e ranger, thunar}
+	{alacritty -e ranger, nemo}
 
 # Firefox
 alt + w
 	firefox
 
-
 # program launcher
 alt + d
-	rofi -show drun
-	#~/.config/rofi/launcher.sh
+	~/.config/rofi/launcher.sh
 
-# powermenu
+# command pallette
 alt + p
-	~/.config/rofi/powermenu.sh
+	~/.config/rofi/command_palette.sh
 
 # screenshot
 alt + s

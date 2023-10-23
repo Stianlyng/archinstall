@@ -29,7 +29,7 @@ $turnOffDesktopLight
 $brightDesktopLight
 $turnOfflights
 $turnOnLights" | rofi -dmenu -i -p "Commandpalette" \
-		  -theme "~/.config/rofi/powermenu.rasi")
+		  -theme "~/.config/rofi/command_palette.rasi")
 
 if [ "$selected_option" == "$lock" ]; then
 	# insert lock command here
