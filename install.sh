@@ -11,7 +11,6 @@ launcher=rofi
 shell=zsh
 display_manager=ly
 
-
 ##################################################
 ##						##
 ##		     methods			##
@@ -60,24 +59,22 @@ chmod -R 755 hardware
 #############	    Symlinks 	      ############
 
 # regular
-ln -s $(pwd)/configs/$term      $config_dir/$term
-ln -s $(pwd)/configs/kmonad     $config_dir/kmonad
-ln -s $(pwd)/configs/nvim       $config_dir/nvim
+ln -fs $(pwd)/configs/$term      $config_dir/$term
+ln -fs $(pwd)/configs/kmonad     $config_dir/kmonad
+ln -fs $(pwd)/configs/nvim       $config_dir/nvim
 
 
 # Other 
-ln -s $(pwd)/wallpapers	 $HOME/.wallpapers
-ln -s $(pwd)/scripts		 $HOME/.scripts
-ln -s $(pwd)/fonts 		 $HOME/.local/share/fonts
-ln -s $(pwd)/desktopfiles 	 $HOME/.local/share/applications
+ln -fs $(pwd)/wallpapers	 $HOME/.wallpapers
+ln -fs $(pwd)/scripts		 $HOME/.scripts
+ln -fs $(pwd)/fonts 		 $HOME/.local/share/fonts
+ln -fs $(pwd)/desktopfiles 	 $HOME/.local/share/applications
 
 # Shell environments
-ln -s $(pwd)/configs/zshrc	 $HOME/.zshrc
+ln -fs $(pwd)/configs/zshrc	 $HOME/.zshrc
 ln -fs $(pwd)/configs/bashrc	 $HOME/.bashrc
-ln -s $(pwd)/configs/profile    $HOME/.profile
+ln -fs $(pwd)/configs/profile    $HOME/.profile
 
-# refresh fonts cache
-fc-cache -fv
 
 ##################################################
 ##						##
@@ -90,7 +87,6 @@ packages=(
   # Essentials
   "$term"
   "$cli_filemanager"
-  "$launcher"
   "$display_manager"
   "$shell"
   "base-devel"
@@ -114,6 +110,7 @@ if ask_question "Do you want to install graphical apps such as firefox and nemo?
 
   packages+=( 
   "$browser"
+  "$launcher"
   "$gui_filemanager"
   "polkit-kde-agent"
   "dunst"
@@ -234,5 +231,9 @@ do
     esac
 done
 
+#######################################################
 
+
+# refresh fonts cache. uncomment if fonts is not added correctly
+#fc-cache -fv
 echo 'End of script!'
