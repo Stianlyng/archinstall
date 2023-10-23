@@ -13,7 +13,7 @@ echo $decryption_key | gpg --batch --passphrase-fd 0 ssh/id_rsa.pub.gpg
 
 # Copy ssh keys
 mkdir -p $HOME/.ssh
-cp -r ssh/* $HOME/.ssh/
+cp -r $HOME/code/archinstall/ssh/* $HOME/.ssh/
 
 # Set permissions
 chmod 700 $HOME/.ssh

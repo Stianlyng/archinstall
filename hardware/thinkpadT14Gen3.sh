@@ -58,20 +58,31 @@ sudo ln -s /usr/share/ModemManager/fcc-unlock.available.d/2c7c /etc/ModemManager
 
 # Add network manager profile (PIN code etc)
 
-echo "Enter password for decrypting sim card profile:"
-read -s decryption_key
+str="[connection]
+id=Telia
+uuid=7f8d41ab-c93b-465d-8705-b0b280659481
+type=gsm
+autoconnect=false
 
-filename=Telia.nmconnection
-src_path=network/connections
-dest_path=/etc/Network/Manager/system-connections
+[gsm]
+apn=telia.cmg
+number=*99#
+pin=0324
 
-echo $decryption_key | gpg --batch --passphrase-fd 0 $src_path/$filename.gpg
+[ppp]
 
-sudo mkdir -p $dest_path
+[ipv4]
+method=auto
 
-sudo cp $src_path/$filename $dest_path/$filename
+[ipv6]
+addr-gen-mode=stable-privacy
+method=auto
 
-sudo chmod 600 $dest_path/$filename
+[proxy]"
+
+write_to_file "$str" "/etc/NetworkManager" "Telia.nmconnection"
+
+sudo chmod 600 /etc/NetworkManager/Telia.nmconnection
 
 ####################
 #     Mute fix     #		
