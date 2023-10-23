@@ -1,0 +1,11 @@
+[Desktop Entry]
+Name=CLion 2023.2.2
+Exec="/home/stian/.local/share/JetBrains/Toolbox/apps/clion/bin/clion.sh" %u
+Version=1.0
+Type=Application
+Categories=Development;IDE;
+Terminal=false
+Icon=/home/stian/.local/share/JetBrains/Toolbox/apps/clion/bin/clion.svg
+Comment=A cross-platform C and C++ IDE
+StartupWMClass=jetbrains-clion
+StartupNotify=true

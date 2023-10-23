@@ -7,11 +7,7 @@ WALLPAPER="$HOME/.wallpapers/8K/dunes.jpg"
 #	   protocol independent		 #
 ##########################################
 
-# todo; keyboard mapping if pc is my Thinkpad
-# requires sudo which fucks up the script..
-#if dmidecode -s system-manufacturer | grep -iq "LENOVO"; then
-#  kmonad ~/.config/kmonad/t14g3.kbd &
-#fi
+kmonad ~/.config/kmonad/t14g3.kbd &
 
 # notifications
 /usr/bin/dunst &

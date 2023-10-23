@@ -116,12 +116,10 @@ if ask_question "Do you want to install graphical apps such as firefox and nemo?
   "dunst"
   )
 
-  ln -s $(pwd)/configs/bspwm      $config_dir/bspwm
   ln -s $(pwd)/configs/rofi 	  $config_dir/rofi
-  ln -s $(pwd)/configs/sxhkd	  $config_dir/sxhkd
 
 else
-  echo "You chose not to install bspwm."
+  echo "You chose not to install graphical apps."
 fi
 
 #########               BSPWM               #########

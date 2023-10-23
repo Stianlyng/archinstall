@@ -1,40 +1,51 @@
-# terminal emulator
-super + Return
+##########################
+##	Defualt		##
+##########################
+
+super + Return		
 	alacritty
 
-# ranger 
-super + {_,shift + }n
-	{alacritty -e ranger, nemo}
-
-# Firefox
 super + w
 	firefox
 
-# program launcher
+super + {_,shift + }n
+	{alacritty -e ranger, nemo}
+
+
+##########################
+##	Launchers	##
+##########################
+
 super + d
 	~/.config/rofi/launcher.sh
 
-# command pallette
 super + p
 	~/.config/rofi/command_palette.sh
 
-# screenshot
 super + s
 	~/.config/rofi/screenshot.sh
 
-# Split
+
+##########################
+##	Layout		##
+##########################
+
+
+
+##########################
+##	Window		##
+##########################
+
+super + {t,shift + t,f,m}
+	bspc node -t {tiled,pseudo_tiled,floating,fullscreen}
+
+super + {_,shift + }q
+	bspc node -{c,k}
+
 super + e
 	bspc node @parent -R 90
 
 
-#
-# bspwm hotkeys
-#
-
-
-# close and kill
-super + {_,shift + }q
-	bspc node -{c,k}
 
 # alternate between the tiled and monocle layout
 #super + m
@@ -48,13 +59,6 @@ super + y
 super + g
 	bspc node -s biggest.window
 
-#
-# state/flags
-#
-
-# set the window state
-super + {t,shift + t,f,m}
-	bspc node -t {tiled,pseudo_tiled,floating,fullscreen}
 
 # set the node flags
 super + ctrl + {m,x,y,z}

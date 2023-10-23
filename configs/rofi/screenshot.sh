@@ -9,7 +9,7 @@ file="/home/stian/screenshots/screenshot-$(date +%F_%T).png"
 
     selected_option=$(echo "$selClip
 $selSave" | rofi -dmenu -i -p "$title" \
-		-theme "~/.config/rofi/powermenu.rasi")
+		-theme "~/.config/rofi/screenshot.rasi")
 
  
 
