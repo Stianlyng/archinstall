@@ -1,6 +1,9 @@
 # Add mounts etcc
 ```
-sudo mount -t nfs 192.168.1.5:volume1/media /mnt/nas
+sudo mount -t nfs 192.168.1.5:volume1/media $HOME/nas/media
+
+sudo mount -t nfs 192.168.1.5:volume1/Public $HOME/nas/public
+sudo mount -t nfs 192.168.1.5:volume1/Vault $HOME/nas/vault
 ```
 
 might be nice to mount in home for correct permissions
