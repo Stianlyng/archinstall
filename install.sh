@@ -106,12 +106,12 @@ packages=(
   "nodejs"
   "npm"
 
-
   # Graphical
   "firefox"
   "rofi"
   "nemo"
   "polkit-kde-agent"
+  "bluez-utils"
 
   # Hyprland
   "hyprland"
