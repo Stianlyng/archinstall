@@ -3,11 +3,6 @@
 config_dir="$HOME/.config"
 
 # Default apps
-term=alacritty
-browser=firefox
-cli_filemanager=ranger
-gui_filemanager=nemo
-launcher=rofi
 shell=zsh
 display_manager=ly
 
@@ -39,7 +34,7 @@ ask_question() {
 
 ##################################################
 ##						##
-##		     home			##
+##		 adding folders			##
 ##						##
 ##################################################
 mkdir -p $HOME/code
@@ -59,7 +54,7 @@ chmod -R 755 hardware
 #############	    Symlinks 	      ############
 
 # regular
-ln -fs $(pwd)/configs/$term      $config_dir/$term
+ln -fs $(pwd)/configs/alacritty  $config_dir/alacritty
 ln -fs $(pwd)/configs/kmonad     $config_dir/kmonad
 ln -fs $(pwd)/configs/nvim       $config_dir/nvim
 
@@ -85,8 +80,8 @@ ln -fs $(pwd)/configs/profile    $HOME/.profile
 packages=(
 
   # Essentials
-  "$term"
-  "$cli_filemanager"
+  "alacritty"
+  "ranger"
   "$display_manager"
   "$shell"
   "base-devel"
@@ -109,9 +104,9 @@ packages=(
 if ask_question "Do you want to install a graphical environment (Hyprland)"; then
 
   packages+=( 
-  "$browser"
-  "$launcher"
-  "$gui_filemanager"
+  "firefox"
+  "rofi"
+  "nemo"
   "polkit-kde-agent"
 
   # Hyprland
@@ -120,6 +115,7 @@ if ask_question "Do you want to install a graphical environment (Hyprland)"; the
   "swaybg"
   "waybar"
   "dunst"
+  "wl-clipboard"
   )
 
   ln -s $(pwd)/configs/rofi 	  $config_dir/rofi
@@ -141,6 +137,10 @@ cd yay
 makepkg -si
 cd ..
 rm -rf yay
+
+
+# Install kMonad
+./scripts/kmonad_setup.sh
 
 # Enable ly display manager
 sudo systemctl enable $display_manager

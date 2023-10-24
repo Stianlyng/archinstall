@@ -35,7 +35,7 @@ if [ "$selected_option" == "$lock" ]; then
 	# insert lock command here
 	notify-send "fisk"
 elif [ "$selected_option" == "$logout" ]; then
-	bspc quit
+	hyprctl dispatch exit
 elif [ "$selected_option" == "$shutdown" ]; then
 	systemctl poweroff
 elif [ "$selected_option" == "$reboot" ]; then

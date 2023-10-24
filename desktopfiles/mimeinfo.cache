@@ -1,3 +1,4 @@
 [MIME Cache]
 x-scheme-handler/fleet=jetbrains-fleet.desktop;
+x-scheme-handler/geo=wheelmap-geo-handler.desktop;
 x-scheme-handler/jetbrains=jetbrains-toolbox.desktop;
