@@ -4,7 +4,6 @@ config_dir="$HOME/.config"
 
 # Default apps
 shell=zsh
-display_manager=ly
 
 ##################################################
 ##						##
@@ -50,7 +49,6 @@ chmod -R 755 configs
 chmod -R 755 scripts
 chmod -R 755 hardware
 
-
 #############	    Symlinks 	      ############
 
 # regular
@@ -64,6 +62,12 @@ ln -fs $(pwd)/wallpapers	 $HOME/.wallpapers
 ln -fs $(pwd)/scripts		 $HOME/.scripts
 ln -fs $(pwd)/fonts 		 $HOME/.local/share/fonts
 ln -fs $(pwd)/desktopfiles 	 $HOME/.local/share/applications
+
+# Styling (gtk etc)
+ln -fs $(pwd)/configs/styling/gtk-3.0	 $HOME/.config/gtk-3.0
+ln -fs $(pwd)/configs/styling/xsettingsd $HOME/.config/xsettingsd
+ln -fs $(pwd)/configs/styling/gtkrc-2.0	 $HOME/.gtkrc-2.0
+ln -fs $(pwd)/configs/styling/icons	 $HOME/.icons
 
 # Shell environments
 ln -fs $(pwd)/configs/zshrc	 $HOME/.zshrc
@@ -82,7 +86,6 @@ packages=(
   # Essentials
   "alacritty"
   "ranger"
-  "$display_manager"
   "$shell"
   "base-devel"
   "openssh"
@@ -139,11 +142,14 @@ cd ..
 rm -rf yay
 
 
+# AUR
+yay -S jetbrains-toolbox usbimager
+
 # Install kMonad
 ./scripts/kmonad_setup.sh
 
-# Enable ly display manager
-sudo systemctl enable $display_manager
+# install virtmanager
+./scripts/apps/virtmanager_install.sh
 
 ###########	SHELL	###########
 
@@ -172,6 +178,8 @@ if sudo dmidecode -s system-manufacturer | grep -iq "vmware\|virtualbox\|xen\|kv
 else
   echo "Not running in a VM"
 fi
+
+sudo pacman -Rs dmudecode
 
 ####     Choose spesific machine configs     ####
 

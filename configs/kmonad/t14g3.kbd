@@ -29,9 +29,9 @@
 
 (defalias
     
-    ae (tap-hold-next 400 ' (around ralt q))
-    oe (tap-hold-next 400 ; (around ralt l))
-    aa (tap-hold-next 400 [ (around ralt w))
+    ae (tap-hold-next 600 ' (around ralt q))
+    oe (tap-hold-next 600 ; (around ralt l))
+    aa (tap-hold-next 600 [ (around ralt w))
 
     nav (tap-next esc (layer-toggle navigation))
 
