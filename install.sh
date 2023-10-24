@@ -75,9 +75,14 @@ ln -fs $(pwd)/configs/bashrc	 $HOME/.bashrc
 ln -fs $(pwd)/configs/profile    $HOME/.profile
 
 
+# Graphical
+ln -s $(pwd)/configs/rofi 	  $config_dir/rofi
+ln -s $(pwd)/configs/hypr	 $config_dir/hypr
+ln -s $(pwd)/configs/waybar	 $config_dir/waybar
+
 ##################################################
 ##						##
-##		     Packages			##
+##		Official Packages		##
 ##						##
 ##################################################
 
@@ -93,6 +98,7 @@ packages=(
   "fzf"
   "neovim"
   "tldr"
+  "nfs-utils"
   "dmidecode"
   "gnupg" # encryption for secrets etc..
 
@@ -100,13 +106,8 @@ packages=(
   "nodejs"
   "npm"
 
-)
 
-#########               Graphical  	    #########
-
-if ask_question "Do you want to install a graphical environment (Hyprland)"; then
-
-  packages+=( 
+  # Graphical
   "firefox"
   "rofi"
   "nemo"
@@ -119,21 +120,22 @@ if ask_question "Do you want to install a graphical environment (Hyprland)"; the
   "waybar"
   "dunst"
   "wl-clipboard"
-  )
 
-  ln -s $(pwd)/configs/rofi 	  $config_dir/rofi
-  ln -s $(pwd)/configs/hypr	 $config_dir/hypr
-  ln -s $(pwd)/configs/waybar	 $config_dir/waybar
-  ln -s $(pwd)/configs/cheatsheet.md $config_dir/cheatsheet.md # hypr keybinds
-else
-  echo "You chose not to install graphical apps."
-fi
+)
+
 
 for pkg in "${packages[@]}"; do
   sudo pacman -S --needed --noconfirm $pkg || echo "Failed to install $pkg" >> logfile.txt
 done
 
-# Install yay
+##################################################
+##						##
+##		Arch User Repository		##
+##						##
+##################################################
+
+# Install YAY
+
 git clone https://aur.archlinux.org/yay.git 
 cd yay
 makepkg -si
@@ -141,24 +143,31 @@ cd ..
 rm -rf yay
 
 
-# AUR
+# Packages
+
 yay -S jetbrains-toolbox
 
+##################################################
+##						##
+##		     Scripts			##
+##						##
+##################################################
+
 # Install kMonad
-./scripts/kmonad_setup.sh
+if ask_question "Do you want to install kmonad?"; then
+  ./scripts/kmonad_setup.sh
+fi
 
 # install virtmanager
+if ask_question "Do you want to install virtmanager?"; then
 ./scripts/apps/virtmanager_install.sh
+fi
 
 # Add Nas to fstab
 ./scripts/fstab_setup.sh
 
-###########	SHELL	###########
 
-# Change default shell
-chsh -s /bin/$shell
-
-###########	SSH	###########
+# SSH auth & change from https to ssh
 
 ./scripts/git_setup.sh
 
@@ -193,10 +202,17 @@ do
     esac
 done
 
-#######################################################
 
+##################################################
+##						##
+##		     Misc			##
+##						##
+##################################################
 
 # refresh fonts cache. uncomment if fonts is not added correctly
 fc-cache -fv
+
+# Change default shell
+chsh -s /bin/$shell
 
 echo 'End of script!'
