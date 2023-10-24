@@ -1,6 +1,6 @@
 username='stian'
 
-sudo pacman -Syu virt-manager qemu-desktop dnsmasq iptables-nft
+sudo pacman -Syu --needed virt-manager qemu-desktop libvirt edk2-ovmf dnsmasq vde2 bridge-utils iptables-nft dmidecode
 
 sudo systemctl enable --now libvirtd.service
 
