@@ -106,62 +106,30 @@ packages=(
 
 #########               Graphical  	    #########
 
-if ask_question "Do you want to install graphical apps such as firefox and nemo?"; then
+if ask_question "Do you want to install a graphical environment (Hyprland)"; then
 
   packages+=( 
   "$browser"
   "$launcher"
   "$gui_filemanager"
   "polkit-kde-agent"
+
+  # Hyprland
+  "hyprland"
+  "xdg-desktop-portal-hyprland"
+  "swaybg"
+  "waybar"
   "dunst"
   )
 
   ln -s $(pwd)/configs/rofi 	  $config_dir/rofi
-
+  ln -s $(pwd)/configs/rofi 	  $config_dir/rofi
+  ln -s $(pwd)/configs/hypr	 $config_dir/hypr
+  ln -s $(pwd)/configs/waybar	 $config_dir/waybar
+  ln -s $(pwd)/configs/cheatsheet.md $config_dir/cheatsheet.md # hypr keybinds
 else
   echo "You chose not to install graphical apps."
 fi
-
-#########               BSPWM               #########
-
-if ask_question "Do you want to install bspwm?"; then
-
-  packages+=( 
-    "bspwm"
-    "sxhkd"
-    "xclip"
-    "nitrogen"
-    "polybar"
-    "xorg"
-  )
-
-  ln -s $(pwd)/configs/bspwm      $config_dir/bspwm
-  ln -s $(pwd)/configs/rofi 	  $config_dir/rofi
-  ln -s $(pwd)/configs/sxhkd	  $config_dir/sxhkd
-
-else
-  echo "You chose not to install bspwm."
-fi
-
-#########               Hyprland              #########
-
-if ask_question "Do you want to install hyprland?"; then
-
-  packages+=( 
-    "hyprland"
-    "xdg-desktop-portal-hyprland"
-    "swaybg"
-    "waybar"
-  )
-
-  ln -s $(pwd)/configs/hypr	 $config_dir/hypr
-  ln -s $(pwd)/configs/waybar	 $config_dir/waybar
-
-
-else
-  echo "You chose not to install hyprland."
-fi
-
 
 for pkg in "${packages[@]}"; do
   sudo pacman -S --needed --noconfirm $pkg || echo "Failed to install $pkg" >> logfile.txt

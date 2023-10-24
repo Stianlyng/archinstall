@@ -1,4 +1,4 @@
-# Garuda Sway-WM CheatSheet #
+# Stians Hypland CheatSheet #
 
    = Super Key
 
