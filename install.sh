@@ -77,7 +77,7 @@ ln -fs $(pwd)/configs/profile    $HOME/.profile
 
 ##################################################
 ##						##
-##		     Scrips			##
+##		     Packages			##
 ##						##
 ##################################################
 
@@ -122,7 +122,6 @@ if ask_question "Do you want to install a graphical environment (Hyprland)"; the
   )
 
   ln -s $(pwd)/configs/rofi 	  $config_dir/rofi
-  ln -s $(pwd)/configs/rofi 	  $config_dir/rofi
   ln -s $(pwd)/configs/hypr	 $config_dir/hypr
   ln -s $(pwd)/configs/waybar	 $config_dir/waybar
   ln -s $(pwd)/configs/cheatsheet.md $config_dir/cheatsheet.md # hypr keybinds
@@ -143,13 +142,16 @@ rm -rf yay
 
 
 # AUR
-yay -S jetbrains-toolbox usbimager
+yay -S jetbrains-toolbox
 
 # Install kMonad
 ./scripts/kmonad_setup.sh
 
 # install virtmanager
 ./scripts/apps/virtmanager_install.sh
+
+# Add Nas to fstab
+./scripts/fstab_setup.sh
 
 ###########	SHELL	###########
 
@@ -166,20 +168,6 @@ chsh -s /bin/$shell
 ##						##
 ##################################################
 
-####   Change modkey if running inside a VM   ####
-#
-if sudo dmidecode -s system-manufacturer | grep -iq "vmware\|virtualbox\|xen\|kvm\|qemu\|Microsoft Corporation"; then
-  echo "Running in a VM"
-
-  # Set custom modkey
-  ./scripts/utils/replace_words.sh configs/sxhkd/sxhkdrc super alt
-  ./scripts/utils/replace_words.sh configs/hypr/keybinds.conf SUPER alt
-
-else
-  echo "Not running in a VM"
-fi
-
-sudo pacman -Rs dmudecode
 
 ####     Choose spesific machine configs     ####
 
@@ -209,5 +197,6 @@ done
 
 
 # refresh fonts cache. uncomment if fonts is not added correctly
-#fc-cache -fv
+fc-cache -fv
+
 echo 'End of script!'
