@@ -136,17 +136,18 @@ done
 ##################################################
 
 # Install YAY
+if ask_question "Do you want to install YAY?"; then
+  git clone https://aur.archlinux.org/yay.git 
+  cd yay
+  makepkg -si
+  cd ..
+  rm -rf yay
 
-git clone https://aur.archlinux.org/yay.git 
-cd yay
-makepkg -si
-cd ..
-rm -rf yay
-
-
-# Packages
-
-yay -S jetbrains-toolbox
+  # YAY Packages
+  if ask_question "Do you want to install jetbrains-toolbox?"; then
+    yay -S jetbrains-toolbox
+  fi
+fi
 
 ##################################################
 ##						##
