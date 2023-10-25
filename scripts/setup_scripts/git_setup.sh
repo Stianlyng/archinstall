@@ -24,7 +24,7 @@ chmod 644 $HOME/.ssh/id_rsa.pub
 ssh-add $HOME/.ssh/id_rsa
 
 # Change from the https to ssh origin in the repo
-git remote set-url origin git@github.com:Stianlyng/archinstall.git
+git remote set-url origin git@github.com:Stianlyng/conf.git
 
 # add git username
 git config --global user.email "stianlyng@protonmail.com"
