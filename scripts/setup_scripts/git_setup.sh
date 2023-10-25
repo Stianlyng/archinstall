@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# Actualt path of this script
+SCRIPT_DIR=$(dirname "$(realpath "$BASH_SOURCE")")
+
 # Start the ssh-agent
 eval $(ssh-agent)
 
@@ -8,13 +11,13 @@ echo "Enter password for decrypting secrets:"
 read -s decryption_key
 
 # Decrypt the files
-echo $decryption_key | gpg --batch --passphrase-fd 0 ssh/id_rsa.gpg
-echo $decryption_key | gpg --batch --passphrase-fd 0 ssh/id_rsa.pub.gpg
+echo $decryption_key | gpg --batch --passphrase-fd 0 $SCRIPT_DIR/../../ssh/id_rsa.gpg
+echo $decryption_key | gpg --batch --passphrase-fd 0 $SCRIPT_DIR/../../ssh/id_rsa.pub.gpg
 
 # Copy ssh keys
 mkdir -p $HOME/.ssh
-echo pwd
-cp -r ssh/* $HOME/.ssh/
+
+cp -r $SCRIPT_DIR/../../ssh/* $HOME/.ssh/
 
 # Set permissions
 chmod 700 $HOME/.ssh
