@@ -1,0 +1,2 @@
+#!/bin/bash
+curl -X PUT -H "Content-Type: application/json" -d '{"on":false}' "192.168.1.57/api/govhnBiTPe8iX8ELInC3k3aaOHyCHT5BNmicHAei/lights/14/state"

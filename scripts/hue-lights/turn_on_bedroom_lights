@@ -1,0 +1,9 @@
+#!/bin/bash
+
+curl -X PUT -H "Content-Type: application/json" -d '{"on":true, "sat":117, "bri":254,"hue":15413}' "192.168.1.57/api/govhnBiTPe8iX8ELInC3k3aaOHyCHT5BNmicHAei/lights/11/state"
+
+curl -X PUT -H "Content-Type: application/json" -d '{"on":true, "sat":117, "bri":254,"hue":15413}' "192.168.1.57/api/govhnBiTPe8iX8ELInC3k3aaOHyCHT5BNmicHAei/lights/12/state"
+
+curl -X PUT -H "Content-Type: application/json" -d '{"on":true, "sat":117, "bri":254,"hue":15413}' "192.168.1.57/api/govhnBiTPe8iX8ELInC3k3aaOHyCHT5BNmicHAei/lights/13/state"
+
+curl -X PUT -H "Content-Type: application/json" -d '{"on":true, "sat":117, "bri":254,"hue":15413}' "192.168.1.57/api/govhnBiTPe8iX8ELInC3k3aaOHyCHT5BNmicHAei/lights/14/state"

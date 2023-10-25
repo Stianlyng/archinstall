@@ -1,3 +1,5 @@
+#!/usr/bin/python
+
 import requests
 import json
 
@@ -12,5 +14,5 @@ lights = json.loads(response.text)
 # Turn off all lights
 for light_id in lights.keys():
     url = f"http://{BRIDGE_IP}/api/{USERNAME}/lights/{light_id}/state"
-    payload = json.dumps({"on": False})
+    payload = json.dumps({"on": True})
     requests.put(url, data=payload)

@@ -29,16 +29,23 @@
 
 (defalias
     
-    ae (tap-hold-next 600 ' (around ralt q))
-    oe (tap-hold-next 600 ; (around ralt l))
-    aa (tap-hold-next 600 [ (around ralt w))
+    ;;ae (tap-hold-next 600 ' (around ralt q))
+    ;;oe (tap-hold-next 600 ; (around ralt l))
+    ;;aa (tap-hold-next 600 [ (around ralt w))
+
+    ae (around ralt q)
+    oe (around ralt l)
+    aa (around ralt w)
+
+    lsl (tap-hold-next 600 left lsft)
+    rsr (tap-hold-next 600 right lsft)
 
     nav (tap-next esc (layer-toggle navigation))
 
     lfttab (around lctl (around lsft tab))
     rghttab (around lctl tab)
 
-    term (around lmet (around lsft ret))
+    term (around lmet s)
     ;;term (around met t)
 )
 
@@ -56,9 +63,9 @@
 (deflayer default
   caps  f1  f2  f3  f4  f5  f6 f7  f8  f9  f10  f11  f12 home end ins del
   grv  1    2    3    4    5    6    7    8    9    0    -    =     bspc
-  tab  q    w    e    r    t    y    u    i    o    p     @aa   ]    \
-  @nav  a   s    d    f    g    h    j    k    l    @oe     @ae      ret
-  lsft z    x   c    v     b    n    m    ,    .    /          rsft        pgup  up  ralt
+  tab  q    w    e    r    t    y    u    i    o    p     [   ]    \
+  @nav  a   s    d    f    g    h    j    k    l    ;     '      ret
+  @lsl z    x   c    v     b    n    m    ,    .    /          @rsr        pgup  up  ralt
   lalt lmet lctl         spc          @term  prnt rctl                  left down rght
 )
 
@@ -66,8 +73,8 @@
 (deflayer navigation
   _  _  _  _  _  _  _ _  _  _  _  _  _ _ _ _ _
   _  _    _    _    _    _    _    _    _    _    _    _    _     _
-  _  _    _    _    _    _  home  @lfttab @rghttab end   _     _   _    _
-  _  _    _    _    _    _  left  down  up right   _     _       _
+  _  _    _    _    _    _  home  @lfttab @rghttab end   _     @aa   _    _
+  _  _    _    _    _    _  left  down  up right   @oe     @ae       _
   _ _   _  _  _   _   _     _    _   _     _         _            _  _  _
   _     _ _                 _           _  _ _                     _ _ _
 )

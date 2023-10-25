@@ -157,21 +157,21 @@ fi
 
 # Install kMonad
 if ask_question "Do you want to install kmonad?"; then
-  ./scripts/kmonad_setup.sh
+  ./scripts/setup_scripts/kmonad_setup.sh
 fi
 
 # install virtmanager
 if ask_question "Do you want to install virtmanager?"; then
-./scripts/apps/virtmanager_install.sh
+./scripts/setup_scripts/virtmanager_install.sh
 fi
 
 # Add Nas to fstab
-./scripts/fstab_setup.sh
+./scripts/setup_scripts/fstab_setup.sh
 
 
 # SSH auth & change from https to ssh
 
-./scripts/git_setup.sh
+./scripts/setup_scripts/git_setup.sh
 
 ##################################################
 ##						##
