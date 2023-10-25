@@ -90,7 +90,7 @@ packages=(
 
   # Essentials
   "alacritty"
-  "ranger"
+  "lf"
   "$shell"
   "base-devel"
   "openssh"

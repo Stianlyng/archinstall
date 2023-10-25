@@ -27,9 +27,9 @@ compinit
 ##################################################
 
 
-# ranger
-alias r='ranger'
-alias sr='sudo ranger'
+# Filebrowser
+
+alias f='lf'
 
 # fzf
 alias f='nvim $(find * -type f | fzf)'
@@ -42,7 +42,7 @@ alias p='sudo pacman -S $1'
 alias rec='wf-recorder -g "$(slurp)"'
 alias n='neofetch'
 alias bat='cat /sys/class/power_supply/BAT0/capacity'
-alias hypr='cd ~/.config/hypr/ && ranger'
+
 # Scrips
 
 # run C++ code. 
