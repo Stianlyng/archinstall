@@ -1,5 +1,7 @@
 #!/bin/bash
  
+#theme="$HOME/.local/share/rofi/themes/SOMETHING"
+
 title="Screenshot menu"
 selClip="Selection -> clipboard"
 selSave="Selection -> Save"
@@ -8,8 +10,8 @@ selSave="Selection -> Save"
 file="/home/stian/screenshots/screenshot-$(date +%F_%T).png"
 
     selected_option=$(echo "$selClip
-$selSave" | rofi -dmenu -i -p "$title" \
-		-theme "~/.config/rofi/screenshot.rasi")
+$selSave" | rofi -dmenu -i -p "$title")
+#$selSave" | rofi -dmenu -i -p "$title" -theme $theme)
 
  
 

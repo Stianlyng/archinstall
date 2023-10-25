@@ -8,9 +8,15 @@ configuration {
 }
 
 /*****----- Global Properties -----*****/
-@import                          "colors.rasi"
+
 
 * {
+    background:             #0c0c0c;
+    background-transparent: #0c0c0cBB; 
+    background-alt:         #282B31FF;
+    foreground:             #FFFFFFFF;
+    foreground-alt:         #010101FF;
+    selected:               #7c94bfBB;	
     border-colour:               var(selected);
     background-colour:           var(background-transparent);
     foreground-colour:           var(foreground);

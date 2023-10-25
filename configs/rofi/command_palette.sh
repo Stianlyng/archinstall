@@ -1,5 +1,7 @@
 #!/bin/bash
  
+#theme="$HOME/.local/share/rofi/themes/SOMETHING"
+
 lock=" Lock"
 logout=" Logout"
 shutdown="襤 Poweroff"
@@ -26,8 +28,8 @@ $turnOffDesktopLight
 $brightDesktopLight
 $turnOfflights
 $turnOnLights
-$mountNas" | rofi -dmenu -i -p "Commandpalette" \
-		  -theme "~/.config/rofi/command_palette.rasi")
+$mountNas" | rofi -dmenu -i -p "Commandpalette")
+#$mountNas" | rofi -dmenu -i -p "Commandpalette" -theme "$theme")
 
 if [ "$selected_option" == "$lock" ]; then
 	# insert lock command here

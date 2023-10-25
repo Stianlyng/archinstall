@@ -1,6 +1,8 @@
 #!/usr/bin/env bash
 
 # Constants
+#theme="$HOME/.local/share/rofi/themes/SOMETHING"
+
 divider="---------"
 goback="Back"
 
@@ -288,9 +290,10 @@ show_menu() {
     esac
 }
 
-theme="~/.config/rofi/screenshot.rasi"
+
 # Rofi command to pipe into, can add any options here
-rofi_command="rofi -dmenu $* -p bt -theme $theme"
+rofi_command="rofi -dmenu $* -p bt"
+#rofi_command="rofi -dmenu $* -p bt -theme $theme"
 
 case "$1" in
     --status)
