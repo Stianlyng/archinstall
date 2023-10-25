@@ -30,9 +30,10 @@ compinit
 # Filebrowser
 
 alias f='lf'
+alias r='lf'
 
 # fzf
-alias f='nvim $(find * -type f | fzf)'
+alias ff='nvim $(find * -type f | fzf)'
 alias fd="cd ~ && cd \$(find * -type d | fzf)"
 
 
@@ -50,4 +51,9 @@ alias bat='cat /sys/class/power_supply/BAT0/capacity'
 # Will run test.cpp
 cc() {
     g++ "$1.cpp" -o "$1" && ./"$1"
+}
+
+lfcd () {
+    # `command` is needed in case `lfcd` is aliased to `lf`
+    cd "$(command lf -print-last-dir "$@")"
 }
