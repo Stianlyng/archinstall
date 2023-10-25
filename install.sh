@@ -2,9 +2,6 @@
 
 config_dir="$HOME/.config"
 
-# Default apps
-shell=zsh
-
 ##################################################
 ##						##
 ##		     methods			##
@@ -89,7 +86,8 @@ packages=(
 	# Essentials
 	"alacritty"
 	"lf"
-	"$shell"
+	"ranger" # remove when lf is working
+	"zsh"
 	"base-devel"
 	"openssh"
 	"git"
@@ -141,6 +139,13 @@ done
 ##		Arch User Repository		##
 ##						##
 ##################################################
+
+if ask_question "Do you want to install docker?"; then
+	sudo pacman -S docker
+	sudo systemctl enable docker.service
+	sudo systemctl start docker.service
+	sudo usermod -aG docker stian
+fi
 
 # Install YAY
 if ask_question "Do you want to install YAY?"; then
@@ -201,6 +206,8 @@ fi
 fc-cache -fv
 
 # Change default shell
-chsh -s /bin/$shell
+if ask_question "Would you like to change the shell to zsh?"; then
+	chsh -s /bin/$shell
+fi
 
 echo 'End of script!'

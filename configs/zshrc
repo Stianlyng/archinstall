@@ -29,13 +29,11 @@ compinit
 
 # Filebrowser
 
-alias f='lf'
-alias r='lf'
+alias f='ranger'
 
 # fzf
 alias ff='nvim $(find * -type f | fzf)'
 alias fd="cd ~ && cd \$(find * -type d | fzf)"
-
 
 alias ls='ls --color=auto'
 alias grep='grep --color=auto'

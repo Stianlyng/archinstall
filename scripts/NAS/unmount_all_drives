@@ -1,0 +1,4 @@
+#!/bin/bash
+
+mounts=$(df -hT | grep nfs | awk '{print $7}' | tr '\n' ' ')
+pkexec bash -c "for mount in $mounts; do umount \$mount; done"

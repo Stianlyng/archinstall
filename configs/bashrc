@@ -3,7 +3,7 @@
 #
 
 if [[ $(tty) = /dev/tty1 ]]; then
-  exec Hyprland
+	exec Hyprland
 fi
 
 # If not running interactively, don't do anything
@@ -12,10 +12,13 @@ fi
 alias ls='ls --color=auto'
 alias grep='grep --color=auto'
 
-alias f='lf'
+alias f='ranger'
+#
+# fzf
+alias ff='nvim $(find * -type f | fzf)'
+alias fd="cd ~ && cd \$(find * -type d | fzf)"
 
 alias ls='ls --color=auto'
-
 
 alias tarnow='tar -acf '
 alias untar='tar -zxvf '
