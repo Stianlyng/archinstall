@@ -101,6 +101,11 @@ packages=(
 	"gnupg" # encryption for secrets etc..
 	"starship"
 
+	# screenshots
+	"grim"
+	"slupr"
+	"wf-recorder"
+
 	# nvim dependencies
 	"ripgrep"
 	"fd"
