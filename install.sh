@@ -112,6 +112,7 @@ packages=(
   "nemo"
   "polkit-kde-agent"
   "bluez-utils"
+  "font-manager"
 
   # Hyprland
   "hyprland"

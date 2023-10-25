@@ -22,6 +22,7 @@ fi
 
 # Trigger upgrade
 if [ "$1" == "up" ] ; then
-    kitty --title systemupdate sh -c 'yay -Syu'
+    #kitty --title systemupdate sh -c 'yay -Syu'
+    echo 'trigger upd test'
 fi
 
