@@ -13,6 +13,7 @@ echo $decryption_key | gpg --batch --passphrase-fd 0 ssh/id_rsa.pub.gpg
 
 # Copy ssh keys
 mkdir -p $HOME/.ssh
+echo pwd
 cp -r ssh/* $HOME/.ssh/
 
 # Set permissions
