@@ -1,4 +1,10 @@
+if [[ $(tty) = /dev/tty1 ]]; then
+  exec Hyprland
+fi
+
 source $HOME/.profile
+
+eval "$(starship init zsh)"
 
 # Lines configured by zsh-newuser-install
 HISTFILE=~/.histfile
@@ -14,23 +20,40 @@ autoload -Uz compinit
 compinit
 # End of lines added by compinstall
 
-# ALIASES
-alias r='ranger'
-alias sr='sudo ranger'
+##################################################
+##						##
+##		     aliases			##
+##						##
+##################################################
+
+
+# Filebrowser
+
+alias f='lf'
+alias r='lf'
+
+# fzf
+alias ff='nvim $(find * -type f | fzf)'
+alias fd="cd ~ && cd \$(find * -type d | fzf)"
+
+
 alias ls='ls --color=auto'
 alias grep='grep --color=auto'
-
 alias p='sudo pacman -S $1'
 alias rec='wf-recorder -g "$(slurp)"'
 alias n='neofetch'
 alias bat='cat /sys/class/power_supply/BAT0/capacity'
-alias hypr='cd ~/.config/hypr/ && ranger'
+
 # Scrips
-alias g='python /home/stian/.config/scripts/gpt.py'
 
 # run C++ code. 
 # Ex: cc test
 # Will run test.cpp
 cc() {
     g++ "$1.cpp" -o "$1" && ./"$1"
+}
+
+lfcd () {
+    # `command` is needed in case `lfcd` is aliased to `lf`
+    cd "$(command lf -print-last-dir "$@")"
 }

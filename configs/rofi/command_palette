@@ -1,0 +1,46 @@
+#!/bin/python
+
+import os
+import subprocess
+
+exclude_files = ['file_to_exclude.txt']
+exclude_dirs = ['setup_scripts', 'archive']
+def list_files(startpath):
+    options = {}
+    for root, dirs, files in os.walk(startpath):
+        dirs[:] = [d for d in dirs if d not in exclude_dirs]
+        for file in files:
+            if file not in exclude_files:
+                filePath = os.path.join(root, file)
+                dir = (filePath
+                       .replace(startpath,"")
+                       .replace("/", "")
+                       .replace(file, ""))
+                name = f"{str(dir)} - {file.replace('_',' ')}"
+                options[name] = filePath
+    return options
+
+def show_rofi_menu(options):
+
+    # Convert the list of options to a newline-separated string
+    rofi_input = "\n".join(list(options.keys()))
+
+    # Run the Rofi command and capture its output
+    rofi_command = ["rofi", "-dmenu", "-p", "Choose an option:"]
+    result = subprocess.run(rofi_command, input=rofi_input, text=True, capture_output=True)
+
+    # Check if the user made a selection
+    if result.returncode == 0:
+        selected_option = result.stdout.strip()
+        print(f"You selected: {selected_option}")
+        print(options[selected_option])
+        return subprocess.run([options[selected_option]])
+    else:
+        print("No option selected.")
+
+if __name__ == "__main__":
+    home = os.getenv("HOME")
+    rootDir = os.path.join(home, ".scripts")
+    f = list_files(rootDir)
+
+    show_rofi_menu(f)

@@ -1,9 +1,23 @@
-alias r='ranger'
-alias sr='sudo ranger'
+#
+# ~/.bashrc
+#
+
+if [[ $(tty) = /dev/tty1 ]]; then
+  exec Hyprland
+fi
+
+# If not running interactively, don't do anything
+[[ $- != *i* ]] && return
+
+alias ls='ls --color=auto'
+alias grep='grep --color=auto'
+
+alias f='lf'
+
 alias ls='ls --color=auto'
 
 
 alias tarnow='tar -acf '
 alias untar='tar -zxvf '
 
-
+PS1='[\u@\h \W]\$ '
