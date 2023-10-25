@@ -126,7 +126,7 @@ packages=(
 
 
 for pkg in "${packages[@]}"; do
-  sudo pacman -S --needed --noconfirm $pkg || echo "Failed to install $pkg" >> logfile.txt
+  sudo pacman -Syu --needed --noconfirm $pkg || echo "Failed to install $pkg" >> logfile.txt
 done
 
 ##################################################
