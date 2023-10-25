@@ -101,6 +101,7 @@ packages=(
   "nfs-utils"
   "dmidecode"
   "gnupg" # encryption for secrets etc..
+  "starship"
 
   # Development
   "nodejs"
@@ -182,27 +183,9 @@ fi
 
 ####     Choose spesific machine configs     ####
 
-PS3="Select a file: "
-
-files=$(ls hardware)
-
-select file in Default $files
-do
-    case $file in
-        "Quit")
-            echo "Exiting."
-            break;;
-        *)
-            if [[ -n $file ]]; then
-                echo "You selected $file"
-		./hardware/$file
-                break
-            else
-                echo "Invalid selection"
-            fi
-            ;;
-    esac
-done
+if ask_question "Is this machine a Thinkpad T14 AMD Gen3?"; then
+  ./hardware/thinkpadT14Gen3.sh
+fi
 
 
 ##################################################
