@@ -1,5 +1,8 @@
 # the rest of the vars in hypr config are private
 
+export EDITOR=nvim
+export BROWSER=firefox
+export TERM=alacritty
 # For emulating android
 export ANDROID_HOME=$HOME/Android/Sdk
 export ANDROID_SDK_ROOT=$HOME/Android/Sdk

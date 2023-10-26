@@ -34,6 +34,7 @@ ask_question() {
 ##						##
 ##################################################
 mkdir -p $HOME/code
+mkdir -p $HOME/.config
 mkdir -p $HOME/.local/share/
 
 ##################################################
@@ -71,9 +72,9 @@ ln -fs $(pwd)/configs/bashrc $HOME/.bashrc
 ln -fs $(pwd)/configs/profile $HOME/.profile
 
 # Graphical
-ln -s $(pwd)/configs/rofi $config_dir/rofi
-ln -s $(pwd)/configs/hypr $config_dir/hypr
-ln -s $(pwd)/configs/waybar $config_dir/waybar
+ln -fs $(pwd)/configs/rofi $config_dir/rofi
+ln -fs $(pwd)/configs/hypr $config_dir/hypr
+ln -fs $(pwd)/configs/waybar $config_dir/waybar
 
 ##################################################
 ##						##
@@ -101,7 +102,7 @@ packages=(
 
 	# screenshots
 	"grim"
-	"slupr"
+	"slurp"
 	"wf-recorder"
 
 	# nvim dependencies
