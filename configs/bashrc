@@ -14,13 +14,15 @@ fi
 alias ls='ls --color=auto'
 alias grep='grep --color=auto'
 
-alias f='ranger'
 alias r='ranger'
-#
 # fzf
-alias ff='nvim $(find * -type f | fzf)'
+alias f='nvim $(find * -type f | fzf)'
+alias fc='fzf | wl-copy'
+
+# git
 alias fd="cd ~ && cd \$(find * -type d | fzf)"
 
+alias grub-reload='sudo grub-mkconfig -o /boot/grub/grub.cfg'
 alias ls='ls --color=auto'
 
 alias tarnow='tar -acf '

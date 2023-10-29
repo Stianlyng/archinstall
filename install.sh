@@ -121,6 +121,9 @@ packages=(
 	"bluez-utils"
 	"font-manager"
 	"cliphist"
+	"imv"
+	"zathura"
+	"zathura-pdf-mupdf"
 
 	# Hyprland
 	"hyprland"
