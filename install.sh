@@ -120,6 +120,7 @@ packages=(
 	"polkit-kde-agent"
 	"bluez-utils"
 	"font-manager"
+	"cliphist"
 
 	# Hyprland
 	"hyprland"
@@ -128,6 +129,7 @@ packages=(
 	"waybar"
 	"dunst"
 	"wl-clipboard"
+	"arc-gtk-theme"
 
 )
 
@@ -158,7 +160,7 @@ if ask_question "Do you want to install YAY?"; then
 
 	# YAY Packages
 	if ask_question "Do you want to install jetbrains-toolbox?"; then
-		yay -S jetbrains-toolbox
+		yay -S jetbrains-toolbox nwg-look-bin
 	fi
 fi
 
