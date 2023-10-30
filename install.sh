@@ -53,6 +53,7 @@ chmod -R 755 hardware
 ln -fs $(pwd)/configs/alacritty $config_dir/alacritty
 ln -fs $(pwd)/configs/kmonad $config_dir/kmonad
 ln -fs $(pwd)/configs/nvim $config_dir/nvim
+ln -fs $(pwd)/configs/yt-dlp $config_dir/yt-dlp
 
 # Other
 ln -fs $(pwd)/wallpapers $HOME/.wallpapers
@@ -99,6 +100,9 @@ packages=(
 	"dmidecode"
 	"gnupg" # encryption for secrets etc..
 	"starship"
+	"yt-dlp"
+	"bluez"
+	"bluez-utils"
 
 	# screenshots
 	"grim"
@@ -146,6 +150,8 @@ done
 ##						##
 ##################################################
 
+sudo systemctl enable bluetooth.service
+
 if ask_question "Do you want to install docker?"; then
 	sudo pacman -S docker
 	sudo systemctl enable docker.service
@@ -163,7 +169,7 @@ if ask_question "Do you want to install YAY?"; then
 
 	# YAY Packages
 	if ask_question "Do you want to install jetbrains-toolbox?"; then
-		yay -S jetbrains-toolbox nwg-look-bin
+		yay -S jetbrains-toolbox nwg-look-bin everforest-gtk-theme-git
 	fi
 fi
 

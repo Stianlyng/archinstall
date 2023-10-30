@@ -25,6 +25,8 @@ alias fd="cd ~ && cd \$(find * -type d | fzf)"
 alias grub-reload='sudo grub-mkconfig -o /boot/grub/grub.cfg'
 alias ls='ls --color=auto'
 
+alias yt='yt-dlp "$@"'
+
 alias tarnow='tar -acf '
 alias untar='tar -zxvf '
 
