@@ -9,16 +9,16 @@ config_dir="$HOME/.config"
 ##################################################
 
 ask_question() {
-	local prompt="$1"
-	local default_answer="Y"
+  local prompt="$1"
+  local default_answer="Y"
 
-	read -p "${prompt} [Y/n] " answer
+  read -p "${prompt} [Y/n] " answer
 
-	if [[ -z "$answer" ]]; then
-		answer="$default_answer"
-	fi
+  if [[ -z "$answer" ]]; then
+    answer="$default_answer"
+  fi
 
-	[[ "$answer" =~ ^[Yy]$ ]]
+  [[ "$answer" =~ ^[Yy]$ ]]
 }
 
 # Example usage
@@ -85,63 +85,64 @@ ln -fs $(pwd)/configs/waybar $config_dir/waybar
 
 packages=(
 
-	# Essentials
-	"alacritty"
-	"lf"
-	"ranger" # remove when lf is working
-	"zsh"
-	"base-devel"
-	"openssh"
-	"git"
-	"fzf"
-	"neovim"
-	"tldr"
-	"nfs-utils"
-	"dmidecode"
-	"gnupg" # encryption for secrets etc..
-	"starship"
-	"yt-dlp"
-	"bluez"
-	"bluez-utils"
+  # Essentials
+  "alacritty"
+  "lf"
+  "ranger" # remove when lf is working
+  "zsh"
+  "base-devel"
+  "openssh"
+  "git"
+  "fzf"
+  "neovim"
+  "tldr"
+  "nfs-utils"
+  "dmidecode"
+  "gnupg" # encryption for secrets etc..
+  "starship"
+  "yt-dlp"
+  "bluez"
+  "bluez-utils"
 
-	# screenshots
-	"grim"
-	"slurp"
-	"wf-recorder"
+  # screenshots
+  "grim"
+  "slurp"
+  "wf-recorder"
 
-	# nvim dependencies
-	"ripgrep"
-	"fd"
+  # nvim dependencies
+  "ripgrep"
+  "fd"
 
-	# Development
-	"nodejs"
-	"npm"
+  # Development
+  "nodejs"
+  "npm"
 
-	# Graphical
-	"firefox"
-	"rofi"
-	"nemo"
-	"polkit-kde-agent"
-	"bluez-utils"
-	"font-manager"
-	"cliphist"
-	"imv"
-	"zathura"
-	"zathura-pdf-mupdf"
+  # Graphical
+  "firefox"
+  "rofi"
+  "nemo"
+  "nemo-fileroller"
+  "polkit-kde-agent"
+  "bluez-utils"
+  "font-manager"
+  "cliphist"
+  "imv"
+  "zathura"
+  "zathura-pdf-mupdf"
 
-	# Hyprland
-	"hyprland"
-	"xdg-desktop-portal-hyprland"
-	"swaybg"
-	"waybar"
-	"dunst"
-	"wl-clipboard"
-	"arc-gtk-theme"
+  # Hyprland
+  "hyprland"
+  "xdg-desktop-portal-hyprland"
+  "swaybg"
+  "waybar"
+  "dunst"
+  "wl-clipboard"
+  "arc-gtk-theme"
 
 )
 
 for pkg in "${packages[@]}"; do
-	sudo pacman -Syu --needed --noconfirm $pkg || echo "Failed to install $pkg" >>logfile.txt
+  sudo pacman -Syu --needed --noconfirm $pkg || echo "Failed to install $pkg" >>logfile.txt
 done
 
 ##################################################
@@ -153,24 +154,24 @@ done
 sudo systemctl enable bluetooth.service
 
 if ask_question "Do you want to install docker?"; then
-	sudo pacman -S docker
-	sudo systemctl enable docker.service
-	sudo systemctl start docker.service
-	sudo usermod -aG docker stian
+  sudo pacman -S docker
+  sudo systemctl enable docker.service
+  sudo systemctl start docker.service
+  sudo usermod -aG docker stian
 fi
 
 # Install YAY
 if ask_question "Do you want to install YAY?"; then
-	git clone https://aur.archlinux.org/yay.git
-	cd yay
-	makepkg -si
-	cd ..
-	rm -rf yay
+  git clone https://aur.archlinux.org/yay.git
+  cd yay
+  makepkg -si
+  cd ..
+  rm -rf yay
 
-	# YAY Packages
-	if ask_question "Do you want to install jetbrains-toolbox?"; then
-		yay -S jetbrains-toolbox nwg-look-bin everforest-gtk-theme-git
-	fi
+  # YAY Packages
+  if ask_question "Do you want to install jetbrains-toolbox?"; then
+    yay -S jetbrains-toolbox nwg-look-bin everforest-gtk-theme-git
+  fi
 fi
 
 ##################################################
@@ -181,12 +182,12 @@ fi
 
 # Install kMonad
 if ask_question "Do you want to install kmonad?"; then
-	./scripts/setup_scripts/kmonad_setup.sh
+  ./scripts/setup_scripts/kmonad_setup.sh
 fi
 
 # install virtmanager
 if ask_question "Do you want to install virtmanager?"; then
-	./scripts/setup_scripts/virtmanager_install.sh
+  ./scripts/setup_scripts/virtmanager_install.sh
 fi
 
 # Add Nas to fstab
@@ -205,7 +206,7 @@ fi
 ####     Choose spesific machine configs     ####
 
 if ask_question "Is this machine a Thinkpad T14 AMD Gen3?"; then
-	./hardware/thinkpadT14Gen3.sh
+  ./hardware/thinkpadT14Gen3.sh
 fi
 
 ##################################################
@@ -219,7 +220,7 @@ fc-cache -fv
 
 # Change default shell
 if ask_question "Would you like to change the shell to zsh?"; then
-	chsh -s /bin/$shell
+  chsh -s /bin/$shell
 fi
 
 echo 'End of script!'

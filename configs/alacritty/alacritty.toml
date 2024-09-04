@@ -1,0 +1,8 @@
+import = ["/home/stian/.config/alacritty/everforest.toml"]
+
+[font]
+size = 18.0
+
+[window.padding]
+x = 10
+y = 10
