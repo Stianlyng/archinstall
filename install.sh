@@ -138,6 +138,7 @@ packages=(
   "dunst"
   "wl-clipboard"
   "arc-gtk-theme"
+  "brightnessctl"
 
 )
 
