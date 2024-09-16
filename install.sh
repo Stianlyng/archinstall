@@ -129,6 +129,8 @@ packages=(
   "imv"
   "zathura"
   "zathura-pdf-mupdf"
+  "ttf-font-awesome"
+  "noto-fonts-emoji"
 
   # Hyprland
   "hyprland"
